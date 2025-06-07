@@ -1,0 +1,9 @@
+<div class="user-list-container">
+    <h4>Liste des utilisateurs</h4>
+    <input type="text" [(ngModel)]="searchTerm" (input)="searchUsers()" placeholder="Rechercher un utilisateur..." />
+    <ul>
+        <li *ngFor="let user of filteredUsers">
+            <strong>{{ user.userName }}</strong> - {{ user.email }}
+        </li>
+    </ul>
+</div>

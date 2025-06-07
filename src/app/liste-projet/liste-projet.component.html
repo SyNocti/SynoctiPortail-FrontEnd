@@ -1,0 +1,72 @@
+<div class="project-details-container">
+    <!-- Loading state -->
+    <div class="loading-indicator" *ngIf="loading">
+        <div class="spinner"></div>
+        <p>Chargement des détails du projet...</p>
+    </div>
+
+    <!-- Error state -->
+    <div class="error-message" *ngIf="error && !loading">
+        <p>{{ error }}</p>
+    </div>
+
+    <!-- Project details -->
+    <div class="project-details" *ngIf="fullProject && !loading">
+        <div class="project-header">
+            <h2>{{ fullProject.title }}</h2>
+            <div class="project-badges">
+                <span class="project-type-badge">{{ fullProject.type }}</span>
+                <span class="project-visits-badge">{{ fullProject.nbVisite }} vues</span>
+            </div>
+            <p class="project-date">Créé le: {{ fullProject.date | date:'dd/MM/yyyy à HH:mm' }}</p>
+        </div>
+
+        <div class="project-body">
+            <div class="project-description">
+                <h3>Description</h3>
+                <p>{{ fullProject.description || 'Aucune description disponible.' }}</p>
+            </div>
+
+            <div class="project-url" *ngIf="fullProject.siteUrl">
+                <h3>URL du site</h3>
+                <a [href]="fullProject.siteUrl" target="_blank" rel="noopener noreferrer">
+                    {{ fullProject.siteUrl }}
+                    <i class="fa fa-external-link"></i>
+                </a>
+            </div>
+
+            <div class="project-users" *ngIf="fullProject.username && fullProject.username.length > 0">
+                <h3>Utilisateurs associés</h3>
+                <ul class="users-list">
+                    <li *ngFor="let username of fullProject.username; let i = index">
+                        {{ username }}
+                        <span class="user-id" *ngIf="fullProject.userId && fullProject.userId[i]">(ID: {{
+                            fullProject.userId[i] }})</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="project-gallery" *ngIf="fullProject.pictures && fullProject.pictures.length > 0">
+                <h3>Images du projet ({{ fullProject.pictures.length }})</h3>
+                <div class="image-gallery">
+                    <div class="gallery-item" *ngFor="let picture of fullProject.pictures">
+                        <a [href]="'https://localhost:7257/images/full/' + picture" target="_blank"
+                            rel="noopener noreferrer">
+                            <img [src]="'https://localhost:7257/images/thumbnail/' + picture" alt="Image du projet"
+                                loading="lazy">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="no-images" *ngIf="!fullProject.pictures || fullProject.pictures.length === 0">
+                <p>Aucune image disponible pour ce projet.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- No project selected state -->
+    <div class="no-project-selected" *ngIf="!projectId && !loading">
+        <p>Veuillez sélectionner un projet pour voir ses détails.</p>
+    </div>
+</div>

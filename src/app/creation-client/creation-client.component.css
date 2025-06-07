@@ -1,0 +1,162 @@
+.register {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    padding: 20px;
+    margin: 20px auto;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.register>div {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+input {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #f5f5f5;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+button:hover {
+    background-color: #e9e9e9;
+}
+
+/* Add these styles to fix scrolling issues */
+.iti__country-list {
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: absolute;
+    z-index: 1000;
+}
+
+/* Stop propagation of wheel events */
+ngx-intl-tel-input {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+form {
+    width: 100%;
+}
+
+/* Style the dropdown container to match other inputs */
+:host ::ng-deep .custom {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+:host ::ng-deep .iti {
+    width: 100%;
+}
+
+/* Prevent body scroll when dropdown is open */
+:host ::ng-deep body.iti-mobile-open {
+    position: fixed;
+    width: 100%;
+}
+
+/* Add this to your existing CSS */
+:host ::ng-deep .iti__country-list {
+    background-color: white !important;
+    overflow-y: auto !important;
+    max-height: 200px !important;
+    position: absolute !important;
+    z-index: 9999 !important;
+    width: 100% !important;
+}
+
+/* Make each dropdown item have white background */
+:host ::ng-deep .iti__country {
+    background-color: white !important;
+    padding: 8px !important;
+}
+
+/* Ensure hover state has a different color */
+:host ::ng-deep .iti__country:hover {
+    background-color: #f1f1f1 !important;
+}
+
+/* Style search field to match width of items */
+:host ::ng-deep .iti__search-container {
+    width: 100% !important;
+    padding: 4px 0 !important;
+}
+
+:host ::ng-deep .search-container input {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    margin-bottom: 2px !important;
+}
+
+/* Make the search input field as wide as the list */
+:host ::ng-deep .iti__search-input {
+    width: calc(100% - 16px) !important;
+    margin: 8px !important;
+    padding: 8px !important;
+    border: 1px solid #ddd !important;
+    border-radius: 4px !important;
+}
+
+/* Make the entire dropdown wrapper full width */
+:host ::ng-deep .iti__flag-container {
+    width: 100% !important;
+}
+
+/* Ensure the dropdown is properly sized */
+:host ::ng-deep .iti__dropdown-content {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* Make selected item clearly visible */
+:host ::ng-deep .iti__active {
+    background-color: #e6f7ff !important;
+}
+
+/* Prevent wheel events from propagating to parent elements */
+:host ::ng-deep .iti__dropdown-content {
+    overscroll-behavior: contain;
+}
+
+/* Custom scrollbar styling for better usability */
+:host ::ng-deep .iti__country-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+:host ::ng-deep .iti__country-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+:host ::ng-deep .iti__country-list::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+:host ::ng-deep .iti__country-list::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}

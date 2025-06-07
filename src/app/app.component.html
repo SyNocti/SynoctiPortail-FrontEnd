@@ -1,0 +1,8 @@
+<header>
+    <div class="brand">DevOp Espace Client</div>
+    <div class="nav-links">
+        <button *ngIf="username" (click)="logout()">Se Deconnecter ({{username}})</button>
+    </div>
+</header>
+
+<router-outlet></router-outlet>

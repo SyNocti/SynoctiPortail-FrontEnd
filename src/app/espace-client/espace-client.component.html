@@ -1,0 +1,54 @@
+<div class="client-container">
+    <div class="client-sidebar">
+        <div class="project-select-container">
+            <div class="project-input-container">
+                <input #projectInput type="text" id="projectId" autocomplete="off" autocorrect="off"
+                    autocapitalize="off" spellcheck="false" [(ngModel)]="projectSearchTerm" (input)="filterProjects()"
+                    (click)="toggleProjectList($event)" placeholder="Sélectionnez un projet" />
+            </div>
+            <div #projectDropdown class="project-list" *ngIf="showProjectList" (click)="$event.stopPropagation()">
+                <div class="project-option" *ngFor="let project of filteredProjects"
+                    [class.selected]="selectedProjectId === project.id" (click)="selectProjectOption($event, project)">
+                    <strong>{{ project.title }}</strong> - {{ project.type }}
+                </div>
+                <div *ngIf="filteredProjects.length === 0" class="no-results">
+                    Aucun projet trouvé
+                </div>
+            </div>
+        </div>
+        <nav class="client-nav">
+            <button class="nav-item" [ngClass]="{'active': activeView === 'project'}"
+                (click)="setActiveView('project')">
+                <i class="fa fa-globe"></i>
+                <span>Votre Site</span>
+            </button>
+            <button class="nav-item" [ngClass]="{'active': activeView === 'tickets'}"
+                (click)="setActiveView('tickets')">
+                <i class="fa fa-plus-circle"></i>
+                <span>Créer un ticket</span>
+            </button>
+            <button class="nav-item" [ngClass]="{'active': activeView === 'history'}"
+                (click)="setActiveView('history')">
+                <i class="fa fa-clock"></i>
+                <span>Historique</span>
+            </button>
+        </nav>
+    </div>
+
+    <div class="client-main">
+        <div *ngIf="activeView === 'project'" class="client-section">
+            <h4>Votre Site</h4>
+            <app-liste-projet [project]="project" [projectId]="selectedProjectId"></app-liste-projet>
+        </div>
+        <div *ngIf="activeView === 'tickets'" class="client-section">
+            <h4>Créer un ticket</h4>
+            <app-ticket [ticket]="ticket" [projectId]="selectedProjectId"></app-ticket>
+        </div>
+
+        <div *ngIf="activeView === 'history'" class="client-section">
+            <h4>Historique de vos tickets</h4>
+            <!-- Here you would add the ticket history component or list -->
+            <p>Vous n'avez pas encore de tickets.</p>
+        </div>
+    </div>
+</div>

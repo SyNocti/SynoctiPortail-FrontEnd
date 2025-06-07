@@ -1,0 +1,12 @@
+<div class="content">
+    <div>Nouveau Ticket</div>
+    <input type="text" name="newTitle" id="newTitle" placeholder="Titre du ticket" [(ngModel)]="newTitle">
+    <textarea name="newContent" id="newContent" placeholder="Décrivez votre problème"
+        [(ngModel)]="newContent"></textarea>
+    <div class="file-input">
+        <label for="replyTicketFileInput">Ajouter des images</label>
+        <input #replyTicketFileInput type="file" accept="image/*" name="commentPictures" multiple
+            id="replyTicketFileInput">
+    </div>
+    <button (click)="createTicket()">Créer le ticket</button>
+</div>

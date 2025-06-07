@@ -1,0 +1,38 @@
+<div class="admin-container">
+    <div class="admin-sidebar">
+        <h3>Section Administrateur</h3>
+        <nav class="admin-nav">
+            <button class="nav-item" [ngClass]="{'active': activeView === 'creation'}"
+                (click)="setActiveView('creation')">
+                <i class="fa fa-user-plus"></i>
+                <span>Créer un client</span>
+            </button>
+            <button class="nav-item" [ngClass]="{'active': activeView === 'projet'}" (click)="setActiveView('projet')">
+                <i class="fa fa-plus"></i>
+                <span>Créer un projet</span>
+            </button>
+            <button class="nav-item" [ngClass]="{'active': activeView === 'liste'}" (click)="setActiveView('liste')">
+                <i class="fa fa-users"></i>
+                <span>Liste des clients</span>
+            </button>
+        </nav>
+    </div>
+
+    <div class="admin-main">
+        <div *ngIf="activeView === 'creation'" class="admin-section">
+            <h4>Création de client</h4>
+            <app-creation-client></app-creation-client>
+        </div>
+
+        <div *ngIf="activeView === 'projet'" class="admin-section">
+            <h4>Création de projet</h4>
+            <app-creation-projet></app-creation-projet>
+        </div>
+
+        <div *ngIf="activeView === 'liste'" class="admin-section">
+            <h4>Liste des clients</h4>
+            <app-liste-client></app-liste-client>
+        </div>
+
+    </div>
+</div>

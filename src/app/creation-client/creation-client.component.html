@@ -1,0 +1,25 @@
+<div class="register">
+    <div>Creation d'un client</div>
+
+    <input type="text" name="registerUsername" id="registerUsername" placeholder="Nom d'utilisateur"
+        [(ngModel)]="registerUsername">
+    <input type="text" name="registerEmail" id="registerEmail" placeholder="exemple@mail.com"
+        [(ngModel)]="registerEmail">
+
+    <!-- Phone input field with ngx-intl-tel-input -->
+    <form [formGroup]="clientForm">
+        <ngx-intl-tel-input [cssClass]="'custom'" [preferredCountries]="preferredCountries"
+            [enableAutoCountrySelect]="true" [enablePlaceholder]="true" [searchCountryFlag]="true"
+            [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]" [selectFirstCountry]="false"
+            [selectedCountryISO]="CountryISO.Canada" [phoneValidation]="true" [separateDialCode]="separateDialCode"
+            [numberFormat]="PhoneNumberFormat.International" formControlName="phone">
+        </ngx-intl-tel-input>
+    </form>
+
+    <input type="password" name="registerPassword" id="registerPassword" placeholder="Mot de passe"
+        [(ngModel)]="registerPassword">
+    <input type="password" name="registerPasswordConfirm" id="registerPasswordConfirm"
+        placeholder="Confirmer le mot de passe" [(ngModel)]="registerPasswordConfirm">
+
+    <button (click)="register()">Créer le client</button>
+</div>

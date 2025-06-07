@@ -1,0 +1,159 @@
+.admin-container {
+    display: flex;
+    flex-direction: row;
+    /* Standard row direction (left to right) */
+    min-height: 100vh;
+    margin: 0 auto;
+}
+
+.admin-sidebar {
+    width: 220px;
+    background-color: #f3f2f1;
+    border-left: 1px solid #e1dfdd;
+    /* Match .client-sidebar with left border */
+    border-right: none;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-sidebar h3 {
+    padding: 0 20px;
+    margin-bottom: 24px;
+    color: #323130;
+    font-size: 18px;
+}
+
+.admin-nav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    background: transparent;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 14px;
+    color: #323130;
+    margin: 2px 0;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.2s ease;
+}
+
+.nav-item:hover {
+    background-color: #e1dfdd;
+}
+
+.nav-item.active {
+    background-color: #e1e1e1;
+    border-left: none;
+    /* Remove left border */
+    border-right: 3px solid #0078d4;
+    /* Add right border */
+}
+
+.nav-item.active span {
+    color: #0078d4;
+}
+
+.nav-item i {
+    margin-right: 16px;
+    width: 20px;
+    text-align: center;
+}
+
+.admin-main {
+    flex: 1;
+    padding: 24px;
+    background-color: white;
+}
+
+.admin-section {
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #edebe9;
+    border-radius: 2px;
+    box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+}
+
+h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+h4 {
+    margin-bottom: 15px;
+    color: #323130;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+button {
+    padding: 10px;
+    background-color: #f5f5f5;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #e9e9e9;
+}
+
+.admin-toggle-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.admin-toggle-buttons button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    background-color: #f5f5f5;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.admin-toggle-buttons button:hover {
+    background-color: #e9e9e9;
+}
+
+.admin-toggle-buttons button.active {
+    background-color: #673ab7;
+    color: white;
+    border-color: #673ab7;
+}
+
+.admin-content {
+    display: flex;
+    justify-content: center;
+}
+
+/* Style adjustments for smaller screens */
+@media (max-width: 768px) {
+    .admin-container {
+        flex-direction: column;
+        /* Changed from column-reverse to column */
+    }
+
+    .admin-sidebar {
+        width: 100%;
+        border-left: none;
+        border-bottom: 1px solid #e1dfdd;
+        /* Changed from border-top to border-bottom */
+        border-top: none;
+        order: -1;
+        /* This ensures the sidebar is always first in the layout */
+    }
+}
