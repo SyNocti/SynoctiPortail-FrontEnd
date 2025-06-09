@@ -1,8 +1,20 @@
+<!-- Error message display -->
+<div class="error-message" *ngIf="errorMessage">
+    {{ errorMessage }}
+</div>
+
 <div class="content">
     <div>Connexion</div>
+
     <input type="text" name="loginUsername" id="loginUsername" placeholder="Nom d'utilisateur ou email"
-        [(ngModel)]="loginUsername">
+        [(ngModel)]="loginUsername" [disabled]="isLoading">
     <input type="password" name="loginPassword" id="loginPassword" placeholder="Mot de passe"
-        [(ngModel)]="loginPassword">
-    <button (click)="login()">Se connecter</button>
+        [(ngModel)]="loginPassword" [disabled]="isLoading">
+
+    <div class="button-container">
+        <button (click)="login()" [disabled]="isLoading">
+            <span *ngIf="!isLoading">Se connecter</span>
+            <span *ngIf="isLoading">Connexion en cours...</span>
+        </button>
+    </div>
 </div>

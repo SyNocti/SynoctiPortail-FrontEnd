@@ -8,11 +8,13 @@ import { Ticket } from '../models/ticket';
 import { Project } from '../models/project';
 import { ProjectService } from '../services/project.service';
 import { ListeProjetComponent } from "../liste-projet/liste-projet.component";
+import { FacturationComponent } from "../facturation/facturation.component";
+import { Facture } from '../models/facture';
 
 @Component({
   selector: 'app-espace-client',
   standalone: true,
-  imports: [CommonModule, FormsModule, TicketComponent, ListeProjetComponent],
+  imports: [CommonModule, FormsModule, TicketComponent, ListeProjetComponent, FacturationComponent],
   templateUrl: './espace-client.component.html',
   styleUrl: './espace-client.component.css'
 })
@@ -21,6 +23,7 @@ export class EspaceClientComponent implements OnInit {
   @ViewChild('projectInput') projectInput?: ElementRef;
 
   ticket: Ticket | null = null;
+  facture: Facture | null = null;
   project: Project | null = null;
   // Change the default activeView to 'projet'
   activeView: string = 'project';
