@@ -57,7 +57,7 @@
         </div>
         <div *ngIf="activeView === 'history'" class="client-section">
             <h4>Historique de vos tickets</h4>
-            <app-liste-ticket [listeTicket]="listeTicket" [projectId]="selectedProjectId"></app-liste-ticket>
+            <app-liste-ticket [tickets]="tickets" [projectId]="selectedProjectId"></app-liste-ticket>
         </div>
     </div>
 </div>

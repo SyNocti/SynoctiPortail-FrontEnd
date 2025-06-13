@@ -1,12 +1,37 @@
+<!-- Error message displayed above the form -->
+<div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+</div>
+
+<!-- Success message displayed above the form -->
+<div *ngIf="submitSuccess" class="success-message">
+    Ticket créé avec succès !
+</div>
+
 <div class="content">
     <div>Nouveau Ticket</div>
     <input type="text" name="newTitle" id="newTitle" placeholder="Titre du ticket" [(ngModel)]="newTitle">
     <textarea name="newContent" id="newContent" placeholder="Décrivez votre problème"
         [(ngModel)]="newContent"></textarea>
+
     <div class="file-input">
         <label for="replyTicketFileInput">Ajouter des images</label>
         <input #replyTicketFileInput type="file" accept="image/*" name="commentPictures" multiple
-            id="replyTicketFileInput">
+            id="replyTicketFileInput" (change)="onFileSelected($event)">
     </div>
-    <button (click)="createTicket()">Créer le ticket</button>
+
+    <!-- Image Previews -->
+    <div class="image-previews" *ngIf="imagePreviews.length > 0">
+        <div class="preview-container" *ngFor="let preview of imagePreviews; let i = index">
+            <img [src]="preview" alt="Preview" class="preview-image">
+            <button type="button" class="remove-image" (click)="removeImage(i)">×</button>
+        </div>
+    </div>
+
+    <button class="submit-button" [disabled]="isSubmitting" (click)="createTicket()">
+        <span *ngIf="!isSubmitting">Créer le ticket</span>
+        <span *ngIf="isSubmitting" class="submit-loading">
+            <div class="dot-pulse"></div>
+        </span>
+    </button>
 </div>

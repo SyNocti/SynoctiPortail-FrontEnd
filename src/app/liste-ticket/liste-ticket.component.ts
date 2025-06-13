@@ -14,7 +14,7 @@ import { FormsModule } from '@angular/forms';
 export class ListeTicketComponent implements OnInit {
   @Input() projectId: string = "";
 
-  tickets: Ticket[] = [];
+  @Input() tickets: Ticket[] = [];
   filteredTickets: Ticket[] = [];
   selectedTicket: Ticket | null = null;
   searchTerm: string = '';

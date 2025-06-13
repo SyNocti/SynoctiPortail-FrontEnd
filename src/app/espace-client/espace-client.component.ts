@@ -26,7 +26,7 @@ export class EspaceClientComponent implements OnInit {
   ticket: Ticket | null = null;
   facture: Facture | null = null;
   project: Project | null = null;
-  listeTicket: Ticket | null = null;
+  tickets: Ticket[] = [];
 
   // Change the default activeView to 'projet'
   activeView: string = 'project';
