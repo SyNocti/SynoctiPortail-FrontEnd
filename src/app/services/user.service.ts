@@ -3,7 +3,7 @@ import { Injectable, Signal, signal, WritableSignal } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 
-const domain = "https://localhost:7257/";
+export const domain = "https://localhost:7257/";
 
 @Injectable({
     providedIn: 'root'

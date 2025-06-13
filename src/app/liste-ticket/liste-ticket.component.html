@@ -1,0 +1,64 @@
+<div class="ticket-container">
+    <div class="ticket-list">
+        <h4>Liste des tickets</h4>
+        <input type="text" [(ngModel)]="searchTerm" (input)="searchTickets()" placeholder="Rechercher un ticket..." />
+
+        <div class="tickets">
+            <div *ngFor="let ticket of filteredTickets" class="ticket-item"
+                [class.selected]="selectedTicket?.id === ticket.id" (click)="selectTicket(ticket)">
+                <h5>{{ ticket.title }}</h5>
+                <p class="description">{{ ticket.content | slice:0:100 }}{{ ticket.content && ticket.content.length >
+                    100 ? '...' : '' }}</p>
+                <p class="date">{{ ticket.date | date:'dd/MM/yyyy HH:mm' }}</p>
+            </div>
+
+            <div *ngIf="filteredTickets.length === 0" class="no-tickets">
+                Aucun ticket trouvé
+            </div>
+
+            <div *ngIf="loading" class="loading">
+                Chargement...
+            </div>
+        </div>
+    </div>
+
+    <div class="ticket-details" *ngIf="selectedTicket">
+        <h4>Détails du ticket</h4>
+        <div class="detail-content" *ngIf="!loading; else loadingDetails">
+            <h3>{{ selectedTicket.title }}</h3>
+            <div class="meta-info">
+                <p><strong>Date de création:</strong> {{ selectedTicket.date | date:'dd/MM/yyyy HH:mm' }}</p>
+                <p><strong>Statut:</strong> {{ selectedTicket.status }}</p>
+                <p><strong>Créé par:</strong> {{ selectedTicket.username }}</p>
+            </div>
+            <div class="description-full">
+                <h5>Description</h5>
+                <p>{{ selectedTicket.content }}</p>
+            </div>
+            <div class="pictures" *ngIf="selectedTicket.pictures && selectedTicket.pictures.length > 0">
+                <h5>Pièces jointes</h5>
+                <div class="image-container">
+                    <div *ngFor="let picture of selectedTicket.pictures" class="image-item">
+                        <a [href]="'https://localhost:7257/images/full/' + picture" target="_blank"
+                            rel="noopener noreferrer">
+                            <img [src]="'https://localhost:7257/images/thumbnail/' + picture" alt="Image du ticket"
+                                loading="lazy">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <ng-template #loadingDetails>
+            <div class="loading-details">
+                Chargement des détails...
+            </div>
+        </ng-template>
+    </div>
+
+    <div class="ticket-details empty" *ngIf="!selectedTicket">
+        <div class="select-message">
+            Sélectionnez un ticket pour voir les détails
+        </div>
+    </div>
+</div>
