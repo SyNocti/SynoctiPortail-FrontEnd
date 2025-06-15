@@ -17,7 +17,9 @@ import { Subscription } from 'rxjs';
 export class AppComponent implements OnInit, OnDestroy {
   title = 'angular_portal';
   username: string = "";
+  currentYear: number = new Date().getFullYear();
   private subscription: Subscription = new Subscription();
+
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
